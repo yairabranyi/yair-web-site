@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
+import styled from "styled-components"
+
+
+import Home from "./components/Home"
+import About from "./components/About"
+import Contact from "./components/Contact"
+import Skils from "./components/Skils"
+import Error from "./components/Error"
+import Navigation from "./components/Navigation"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Box>
+        <Navigation />
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/About" component={About} />
+          <Route path="/Contact" component={Contact} />
+          <Route path="/Skils" component={Skils} />
+          <Route component={Error} />
+        </Switch>
+      </Box>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
+
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+`;
